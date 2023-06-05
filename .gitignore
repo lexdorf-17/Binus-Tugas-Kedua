@@ -1,0 +1,33 @@
+# Laravel specific files/directories
+.env
+.env.*
+public/storage
+/node_modules
+/vendor
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+composer.lock
+.env.backup
+
+# Ignore the storage directory, except for the storage/app/public directory
+/storage/*
+!/storage/app/public/
+/storage/app/public/*.*
+
+# Ignore the bootstrap/cache directory
+/bootstrap/cache/
+
+# Ignore the Homestead/Valet related files
+/.homestead
+/.idea
+Homestead.json
+Homestead.yaml
+.env.homestead
+.vagrant
+
+# Ignore the testing directories
+/tests/
+/phpunit.xml
+
+# Ignore any other files or directories specific to your project

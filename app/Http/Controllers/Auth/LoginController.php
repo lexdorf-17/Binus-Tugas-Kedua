@@ -8,33 +8,49 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
+    use AuthenticatesUsers, ThrottlesLogins;
 
-    use AuthenticatesUsers;
+    protected $redirectTo = '/home';
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        // Customize the logic after successful login if needed
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ])->status(429);
+    }
+
+    protected function hasTooManyLoginAttempts(Request $request)
+    {
+        $maxLoginAttempts = 3;
+        $lockoutTime = 30; // in seconds
+
+        if ($this->limiter()->tooManyAttempts($this->throttleKey($request), $maxLoginAttempts)) {
+            Cache::put($this->throttleKey($request), true, $lockoutTime);
+            throw ValidationException::withMessages([
+                $this->username() => [trans('auth.throttle', ['seconds' => $lockoutTime])],
+            ])->status(429);
+        }
+
+        return $this->limiter()->tooManyAttempts($this->throttleKey($request), $maxLoginAttempts);
+    }
+
+    protected function throttleKey(Request $request)
+    {
+        return mb_strtolower($request->input($this->username())) . '|' . $request->ip();
     }
 }
