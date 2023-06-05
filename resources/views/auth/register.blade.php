@@ -61,6 +61,25 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">Captcha</label>
+
+                            <div class="col-md-6">
+                                <div class="captcha">
+                                    <div class="captcha-img">{!! captcha_img() !!}</div>
+                                </div>
+                                <div>
+                                    <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" name="captcha" required>
+                                </div>
+
+                                @error('captcha')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('captcha') }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

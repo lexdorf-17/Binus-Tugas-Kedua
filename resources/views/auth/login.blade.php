@@ -40,6 +40,25 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">Captcha</label>
+
+                            <div class="col-md-6">
+                                <div class="captcha">
+                                    <div class="captcha-img">{!! captcha_img() !!}</div>
+                                </div>
+                                <div>
+                                    <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" name="captcha" required>
+                                </div>
+
+                                @error('captcha')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('captcha') }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

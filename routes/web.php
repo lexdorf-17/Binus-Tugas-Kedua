@@ -17,9 +17,9 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::get('/refresh-captcha', 'Auth\LoginController@refreshCaptcha')->name('refresh_captcha');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
-
 
 Auth::routes();
 
