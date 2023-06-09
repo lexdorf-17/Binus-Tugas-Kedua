@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\MasterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,13 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::get('/refresh-captcha', 'Auth\LoginController@refreshCaptcha')->name('refresh_captcha');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
+
+Route::get('/master', [MasterController::class, 'index'])->name('master.index');
+Route::get('/master/create', [MasterController::class, 'create'])->name('master.create');
+Route::post('/master', [MasterController::class, 'store'])->name('master.store');
+Route::get('/master/{id}/edit', [MasterController::class, 'edit'])->name('master.edit');
+Route::put('/master/{id}', [MasterController::class, 'update'])->name('master.update');
+Route::delete('/master/{id}', [MasterController::class, 'destroy'])->name('master.destroy');
 
 Auth::routes();
 
