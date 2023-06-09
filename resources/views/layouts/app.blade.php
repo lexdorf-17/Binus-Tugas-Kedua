@@ -1,14 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-
     @include('partials.head')
-
     @include('partials.styles')
 
-    @include('partials.scripts')
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @include('partials.scripts')
+    <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
 </head>
 <body>
     <div id="app">
