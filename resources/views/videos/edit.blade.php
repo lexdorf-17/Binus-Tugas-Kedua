@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <h1>Edit Video</h1>
     
     @if ($errors->any())
@@ -22,4 +23,5 @@
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
+</div>
 @endsection
