@@ -40,12 +40,24 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">Captcha</label>
-
+                        <label for="captcha" class="col-md-4 col-form-label text-md-end"></label>
                             <div class="col-md-6">
                                 <div class="captcha">
-                                    <div class="captcha-img">{!! captcha_img() !!}</div>
+                                    <div class="captcha-img">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                        &#x21bb;
+                                    </button>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <label for="captcha" class="col-md-4 col-form-label text-md-end">Captcha</label>
+                        
+                            <div class="col-md-6">
                                 <div>
                                     <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" name="captcha" required>
                                 </div>

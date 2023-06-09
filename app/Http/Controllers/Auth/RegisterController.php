@@ -57,9 +57,7 @@ class RegisterController extends Controller
                 'string',
                 'min:10',
                 'confirmed',
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s:]).*$/',
             ],
-            'captcha' => ['required', 'captcha'],
         ]);
     }
 

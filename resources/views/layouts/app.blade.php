@@ -2,11 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('partials.head')
-    @include('partials.styles')
 
     <!-- Scripts -->
-    @include('partials.scripts')
-    <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">
@@ -18,7 +16,11 @@
             @yield('content')
         </main>
 
-        @include('partials.footer')
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; {{ date('Y') }} Your Website. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

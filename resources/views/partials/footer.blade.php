@@ -1,3 +1,3 @@
-<footer class="pt-5 my-5 text-muted">
-  Created by <a href="#">Binusian</a> &middot; &copy; {{ date('Y') }}
-</footer>
+<div class="container">
+    <p>&copy; {{ date('Y') }} Binusian. All rights reserved.</p>
+</div>

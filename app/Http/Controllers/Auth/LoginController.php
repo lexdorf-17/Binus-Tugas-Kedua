@@ -68,4 +68,9 @@ class LoginController extends Controller
     {
         return mb_strtolower($request->input($this->username())) . '|' . $request->ip();
     }
+
+    public function refreshCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
+    }
 }
