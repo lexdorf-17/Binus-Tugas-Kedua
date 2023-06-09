@@ -101,4 +101,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        var reloadButton = document.getElementById('reload');
+        reloadButton.addEventListener('click', refreshCaptcha);
+    });
+
+    function refreshCaptcha() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'refresh-captcha', true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var captchaSpan = document.querySelector('.captcha-img span');
+                captchaSpan.innerHTML = JSON.parse(xhr.responseText).captcha;
+            }
+        };
+        xhr.send();
+    }
+</script>
 @endsection
