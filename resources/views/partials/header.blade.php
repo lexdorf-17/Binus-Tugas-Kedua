@@ -11,6 +11,12 @@
             <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{ route('master.index') }}">Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{ route('master.index') }}">Video</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">About</a>
           </li>
         </ul>
