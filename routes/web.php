@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\VideoController;
-
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +39,14 @@ Route::get('/videos/{id}', [VideoController::class, 'show'])->name('video.show')
 Route::get('/videos/{id}/edit', [VideoController::class, 'edit'])->name('video.edit');
 Route::put('/videos/{id}', [VideoController::class, 'update'])->name('video.update');
 Route::delete('/videos/{id}', [VideoController::class, 'destroy'])->name('video.destroy');
+
+Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
+Route::post('/students', [StudentController::class, 'store'])->name('students.store');
+Route::get('/students/{student}', [StudentController::class, 'show'])->name('students.show');
+Route::get('/students/{student}/edit', [StudentController::class, 'edit'])->name('students.edit');
+Route::put('/students/{student}', [StudentController::class, 'update'])->name('students.update');
+Route::delete('/students/{student}', [StudentController::class, 'destroy'])->name('students.destroy');
 
 Auth::routes();
 
