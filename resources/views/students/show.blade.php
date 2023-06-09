@@ -1,14 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>Student Details</h1>
+<div class="container">
+    <h1>Student Details</h1>
 
-<p><strong>NIM:</strong> {{ $student->nim }}</p>
-<p><strong>Name:</strong> {{ $student->name }}</p>
-<p><strong>Quiz Score:</strong> {{ $student->score_quiz }}</p>
-<p><strong>Assignment Score:</strong> {{ $student->score_assignment }}</p>
-<p><strong>Absent Score:</strong> {{ $student->score_absent }}</p>
-<p><strong>Practice Score:</strong> {{ $student->score_practice }}</p>
-<p><strong>Test Score:</strong> {{ $student->score_test }}</p>
-<p><strong>Grade:</strong> {{ $student->grade }}</p>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text"><strong>NIM:</strong> {{ $student->nim }}</p>
+            <p class="card-text"><strong>Name:</strong> {{ $student->name }}</p>
+            <p class="card-text"><strong>Quiz Score:</strong> {{ $student->score_quiz }}</p>
+            <p class="card-text"><strong>Assignment Score:</strong> {{ $student->score_assignment }}</p>
+            <p class="card-text"><strong>Absent Score:</strong> {{ $student->score_absent }}</p>
+            <p class="card-text"><strong>Practice Score:</strong> {{ $student->score_practice }}</p>
+            <p class="card-text"><strong>Test Score:</strong> {{ $student->score_test }}</p>
+            <p class="card-text"><strong>Grade:</strong> {{ $student->grade }}</p>
+        </div>
+    </div>
+</div>
 @endsection
