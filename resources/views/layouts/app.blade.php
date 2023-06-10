@@ -5,8 +5,8 @@
     @include('partials.styles')
 
     <!-- Scripts -->
-    @include('partials.scripts')
-    <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+    <!-- @include('partials.scripts') -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">
