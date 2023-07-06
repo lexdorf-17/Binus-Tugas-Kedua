@@ -20,7 +20,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('products.store') }}" method="POST">
+    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -44,19 +44,19 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Qty:</strong>
-                    <input type="text" name="qty" class="form-control" placeholder="Qty">
+                    <input type="text" name="qty" class="form-control" placeholder="Qty" inputmode="numeric" pattern="[0-9]*">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Base Price:</strong>
-                    <input type="text" name="base_price" class="form-control" placeholder="Base Price">
+                    <input type="text" name="base_price" class="form-control" placeholder="Base Price" inputmode="numeric" pattern="[0-9]*">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Sell Price:</strong>
-                    <input type="text" name="sell_price" class="form-control" placeholder="Sell Price">
+                    <input type="text" name="sell_price" class="form-control" placeholder="Sell Price" inputmode="numeric" pattern="[0-9]*">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">

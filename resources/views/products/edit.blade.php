@@ -20,7 +20,7 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('products.update',$product->id) }}" method="POST">
+    <form action="{{ route('products.update',$product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
          <div class="row">
@@ -32,8 +32,38 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Detail:</strong>
-                    <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail">{{ $product->detail }}</textarea>
+                    <strong>Description:</strong>
+                    <textarea class="form-control" style="height:150px" name="description" placeholder="Description">{{ $product->description }}</textarea>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Variant:</strong>
+                    <input type="text" name="variant" class="form-control" placeholder="Variant" value="{{ $product->variant }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Qty:</strong>
+                    <input type="text" name="qty" class="form-control" placeholder="Qty" inputmode="numeric" pattern="[0-9]*" value="{{ $product->qty }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Base Price:</strong>
+                    <input type="text" name="base_price" class="form-control" placeholder="Base Price" inputmode="numeric" pattern="[0-9]*" value="{{ $product->base_price }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Sell Price:</strong>
+                    <input type="text" name="sell_price" class="form-control" placeholder="Sell Price" inputmode="numeric" pattern="[0-9]*" value="{{ $product->sell_price }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Image URL:</strong>
+                    <input type="file" name="image_url" class="form-control" placeholder="image_url">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

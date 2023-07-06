@@ -53,12 +53,27 @@ class ProductController extends Controller
             'name' => 'required',
             'description' => 'required',
             'variant' => 'required',
-            'qty' => 'required',
-            'base_price' => 'required',
-            'sell_price' => 'required',
+            'qty' => 'required|numeric',
+            'base_price' => 'required|numeric',
+            'sell_price' => 'required|numeric',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
     
-        Product::create($request->all());
+        $imagePath = null; // Variable to store the uploaded image path
+
+        if ($request->hasFile('image_url')) {
+            $image = $request->file('image_url');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $imageName);
+            $imagePath = 'images/' . $imageName;
+        }
+
+        $productData = $request->except('image_url');
+        $productData['image_url'] = $imagePath;
+
+        Product::create($productData);
+
+        // Product::create($request->all());
     
         return redirect()->route('products.index')
                         ->with('success','Product created successfully.');
@@ -95,9 +110,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-         request()->validate([
+        request()->validate([
             'name' => 'required',
-            'detail' => 'required',
+            'description' => 'required',
+            'variant' => 'required',
+            'qty' => 'required|numeric',
+            'base_price' => 'required|numeric',
+            'sell_price' => 'required|numeric',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
     
         $product->update($request->all());
