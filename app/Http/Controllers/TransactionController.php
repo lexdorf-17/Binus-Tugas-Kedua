@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
     
 class TransactionController extends Controller
 {
@@ -27,6 +28,21 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::latest()->paginate(5);
         return view('transactions.index',compact('transactions'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+     /**
+     * Display a report.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function report()
+    {
+        $transactions = Transaction::select('product_name', DB::raw('SUM(qty) as total_qty'), DB::raw('SUM(sell_price-base_price) as margin'))
+        ->groupBy('product_name')
+        ->latest()
+        ->paginate(50);
+        return view('transactions.report',compact('transactions'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
