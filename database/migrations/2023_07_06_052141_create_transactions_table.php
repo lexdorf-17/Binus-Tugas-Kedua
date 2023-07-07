@@ -18,9 +18,11 @@ return new class extends Migration
             $table->integer('product_id');
             $table->string('product_name');
             $table->integer('qty');
-            $table->decimal('price', 8, 2);
-            $table->decimal('total', 8, 2);
+            $table->decimal('base_price', 8, 2);
+            $table->decimal('sell_price', 8, 2);
+            $table->decimal('sub_total', 8, 2);
             $table->decimal('tax', 8, 2);
+            $table->decimal('total', 8, 2);
             $table->timestamps();
         });
     }

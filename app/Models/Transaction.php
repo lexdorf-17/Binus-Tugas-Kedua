@@ -15,6 +15,6 @@ class Transaction extends Model
      * @var array
      */
     protected $fillable = [
-        'order_id', 'order_date', 'product_id', 'product_name', 'price', 'qty', 'total', 'tax'
+        'id', 'created_at', 'product_id', 'product_name','base_price', 'sell_price', 'qty', 'sub_total', 'tax', 'total'
     ];
 }
